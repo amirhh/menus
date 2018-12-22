@@ -1,6 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
@@ -22,16 +22,19 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        // use: [
-        //   MiniCssExtractPlugin.loader,
-        //   'css-loader',
-        //   'sass-loader'
-        // ]
-        // use: ExtractTextPlugin.extract({
+
+        use: [//option1
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
+
+        // use: ExtractTextPlugin.extract({//option2
         //   use: ['css-loader', 'sass-loader'],
         //   fallback: 'style-loader'
         // })
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        
+        // use: ['style-loader', 'css-loader', 'sass-loader'],//option3
       },
       {
         test: /\.css$/,
@@ -65,12 +68,11 @@ module.exports = {
     extensions: ['.js']
   },
   plugins: [
+    //either one of these plugins or none of them..
     // new ExtractTextPlugin('[name].css')
-    // new MiniCssExtractPlugin({
-    //   // Options similar to the same options in webpackOptions.output
-    //   // both options are optional
-    //   filename: "[name].css",
-    //   chunkFilename: "[id].css"
-    // })
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
   ]
 };

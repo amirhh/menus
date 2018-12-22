@@ -2,22 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import List from './../components/listItem'
 import { reset_menu } from './../actions';
+import ScrollArea from 'react-scrollbar'
 
 class HomeScene extends Component {
   constructor(props) {
     super(props)
-    this.myScript = this.myScript.bind(this);
+    this.state = {
+      islvl1: false
+    }
   }
 
-  componentWillMount() {
-    console.log('props', this.props);
-    let a = document.getElementById('root');
-    a.addEventListener("click",this.myScript);
+  componentDidMount() {
+    console.log('props',this.props);
+  }
+  
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.ManageMenuReducer.level[1].id) {
+      this.setState({ islvl1: true });
+    } else {
+      this.setState({ islvl1: false });
+    }
   }
 
-  myScript(e) {
-    console.log('reset');
-    // this.props.reset_menu();
+
+  handleReset() {
+    this.setState({ islvl1: false },()=>{
+      this.props.reset_menu();
+    });
   }
 
   render() {
@@ -25,23 +37,35 @@ class HomeScene extends Component {
     const { parent2, parent2Data, parent3, parent3Data, parent4, parent4Data } = this.props.ManageMenuReducer;
     if (menus && menus.items) {
       return (
-        <span style={{display:'flex',width:'100%',height:'100%'}}>
+        <span style={{ display: 'flex', width: '100%', height: '100%' }}>
           <nav id="navigation">
-            <ul className="parent" id="parent1">
-              {menus.items.map((item, index) => <List key={index + 1000} data={item} lvl={1} />)}
-            </ul>
-            <ul className="parent child-parent" style={{ display: parent2 ? 'grid' : 'none' }} id="parent2">
-              {parent2Data.map((item, index) => <List key={index + 2000} data={item} lvl={2} />)}
-            </ul>
+            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
+              <ul className="parent" id="parent1">
+                {menus.items.map((item, index) => <List key={index + 1000} data={item} lvl={1} />)}
+              </ul>
+            </ScrollArea>
+            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
+              <ul className="parent child-parent" style={{ display: parent2 ? 'grid' : 'none' }} id="parent2">
+                {parent2Data.map((item, index) => <List key={index + 2000} data={item} lvl={2} />)}
+              </ul>
+            </ScrollArea>
+            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
             <ul className="parent child-parent" style={{ display: parent3 ? 'grid' : 'none' }} id="parent3">
               {parent3Data.map((item, index) => <List key={index + 3000} data={item} lvl={3} />)}
             </ul>
+            </ScrollArea>
+            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
             <ul className="parent child-parent" style={{ display: parent4 ? 'grid' : 'none' }} id="parent4">
               {parent4Data.map((item, index) => <List key={index + 4000} data={item} lvl={4} />)}
             </ul>
-          </nav>
-          <span style={{width:'100%'}}>
+            </ScrollArea>
 
+          </nav>
+          <span
+            id="spanMouseOut"
+            style={{ display: this.state.islvl1 ? 'block' : 'none', width: '100%', position: 'fixed', zIndex: '99', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)' }}
+            onClick={this.handleReset.bind(this)}
+          >
           </span>
         </span>
       );

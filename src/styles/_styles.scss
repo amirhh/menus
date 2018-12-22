@@ -15,9 +15,10 @@ html, body {
     background-color: $parent_background;
     color: $parent_color;
     display: flex;
+    z-index: 999;
     box-shadow: $parent_box_shadow;
     *{
-      transition: all 0.5s;
+      transition: box-shadow,color,background-color 0.5s;
     }
     .parent{
       min-width: $parent_width;
@@ -51,4 +52,5 @@ html, body {
       box-shadow: $parent_child_box_shadow;
     }
   }
+
 }

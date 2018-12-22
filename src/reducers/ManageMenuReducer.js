@@ -81,6 +81,10 @@ export default (state = INITIAL_STATE, action) => {
         break;
     }
   } else if (action.type === RESET_MENU) {
+    state.level[1].id = null;
+    state.level[2].id = null;
+    state.level[3].id = null;
+    state.level[4].id = null;
     state = INITIAL_STATE;
     return state;
   } else {
