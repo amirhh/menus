@@ -2,7 +2,7 @@
 
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
-mobile application price
+menu
 
 ## Development
 ### Dependencies
