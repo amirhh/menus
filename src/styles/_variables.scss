@@ -1,0 +1,7 @@
+$parent_width:85px;
+$parent_background : rgb(4, 26, 66);
+$parent_color : rgba(255, 255, 255, 0.712);
+$parent_box_shadow : 0 0 12px 5px rgba($parent_background, $alpha: 0.5);
+$child_active_bg : rgb(11, 42, 88);
+$child_box_shadow : 0 0 7px rgba($parent_color, $alpha: 0.25);
+$parent_child_box_shadow : inset -10px 0 15px -10px #0000007e;
