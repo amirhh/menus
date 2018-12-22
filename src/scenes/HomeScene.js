@@ -11,12 +11,7 @@ class HomeScene extends Component {
       islvl1: false
     }
   }
-
-  componentDidMount() {
-    console.log('props',this.props);
-  }
   
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.ManageMenuReducer.level[1].id) {
       this.setState({ islvl1: true });
@@ -24,7 +19,6 @@ class HomeScene extends Component {
       this.setState({ islvl1: false });
     }
   }
-
 
   handleReset() {
     this.setState({ islvl1: false },()=>{
@@ -37,7 +31,7 @@ class HomeScene extends Component {
     const { parent2, parent2Data, parent3, parent3Data, parent4, parent4Data } = this.props.ManageMenuReducer;
     if (menus && menus.items) {
       return (
-        <span style={{ display: 'flex', width: '100%', height: '100%' }}>
+        <span>
           <nav id="navigation">
             <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
               <ul className="parent" id="parent1">
@@ -63,7 +57,7 @@ class HomeScene extends Component {
           </nav>
           <span
             id="spanMouseOut"
-            style={{ display: this.state.islvl1 ? 'block' : 'none', width: '100%', position: 'fixed', zIndex: '99', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)' }}
+            style={{ display: this.state.islvl1 ? 'block' : 'none', width: '100vw', position: 'fixed', zIndex: '99', height: '100vh', backgroundColor: 'rgba(0,0,0,0.5)' }}
             onClick={this.handleReset.bind(this)}
           >
           </span>
