@@ -33,22 +33,22 @@ class HomeScene extends Component {
       return (
         <span>
           <nav id="navigation">
-            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
+            <ScrollArea style={{height:'100%'}} speed={0.8} className="area" contentClassName="content" horizontal={false} >
               <ul className="parent" id="parent1">
                 {menus.items.map((item, index) => <List key={index + 1000} data={item} lvl={1} />)}
               </ul>
             </ScrollArea>
-            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
+            <ScrollArea style={{height:'100%'}} speed={0.8} className="area" contentClassName="content" horizontal={false} >
               <ul className="parent child-parent" style={{ display: parent2 ? 'grid' : 'none' }} id="parent2">
                 {parent2Data.map((item, index) => <List key={index + 2000} data={item} lvl={2} />)}
               </ul>
             </ScrollArea>
-            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
+            <ScrollArea style={{height:'100%'}} speed={0.8} className="area" contentClassName="content" horizontal={false} >
             <ul className="parent child-parent" style={{ display: parent3 ? 'grid' : 'none' }} id="parent3">
               {parent3Data.map((item, index) => <List key={index + 3000} data={item} lvl={3} />)}
             </ul>
             </ScrollArea>
-            <ScrollArea speed={0.8} className="area" contentClassName="content" horizontal={false} >
+            <ScrollArea style={{height:'100%'}} speed={0.8} className="area" contentClassName="content" horizontal={false} >
             <ul className="parent child-parent" style={{ display: parent4 ? 'grid' : 'none' }} id="parent4">
               {parent4Data.map((item, index) => <List key={index + 4000} data={item} lvl={4} />)}
             </ul>

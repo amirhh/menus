@@ -20,9 +20,13 @@ html, body {
     *{
       transition: box-shadow,color,background-color 0.5s;
     }
+    .scrollarea{
+      box-shadow: $parent_child_box_shadow;
+    }
     .parent{
       min-width: $parent_width;
       display: grid;
+      height: 100%;
       min-height: 100%;
       padding: 5px;
       grid-template-columns: auto;
@@ -49,7 +53,6 @@ html, body {
     }
     .child-parent{
       min-width: 180px;
-      box-shadow: $parent_child_box_shadow;
     }
   }
 
